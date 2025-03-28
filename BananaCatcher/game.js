@@ -58,54 +58,22 @@ function createBanana() {
     return banana;
 }
 
-// Local equations database
-const equations = [
-    {
-        image: 'images/banana01.png',
-        solution: 0
-    },
-    {
-        image: 'images/banana02.png',
-        solution: 5
-    },
-    {
-        image: 'images/banana03.png',
-        solution: 7
-    },
-    {
-        image: 'images/banana04.png',
-        solution: 8
-    },
-    {
-        image: 'images/banana05.png',
-        solution: 9
-    },
-    {
-        image: 'images/banana06.png',
-        solution: 0
-    },
-    {
-        image: 'images/banana07.png',
-        solution: 1
-    },
-    {
-        image: 'images/banana08.png',
-        solution: 2
-    },
-    {
-        image: 'images/banana09.png',
-        solution: 3
-    },
-    {
-        image: 'images/banana10.png',
-        solution: 8
+// Get a random equation from the API
+async function getMathEquation() {
+    try {
+        const response = await fetch('api/get_equation.php');
+        if (!response.ok) {
+            throw new Error('Failed to fetch equation');
+        }
+        const data = await response.json();
+        return {
+            image: data.question,
+            solution: data.solution
+        };
+    } catch (error) {
+        console.error('Error fetching equation:', error);
+        throw error;
     }
-];
-
-// Get a random equation from our local database
-function getMathEquation() {
-    const randomIndex = Math.floor(Math.random() * equations.length);
-    return equations[randomIndex];
 }
 
 // Save score to database
@@ -158,16 +126,22 @@ function startTimer() {
 // Show math popup and pause game
 async function showMathPopup() {
     isPaused = true;
-    const mathData = getMathEquation();
-    currentSolution = mathData.solution;
-    equationImage.src = mathData.image;
-    answerInput.value = '';
-    
-    // Ensure clean state before showing popup
-    clearInterval(timerInterval);
-    mathPopup.style.display = 'flex';
-    answerInput.focus();
-    startTimer();
+    try {
+        const mathData = await getMathEquation();
+        currentSolution = mathData.solution;
+        equationImage.src = mathData.image;
+        answerInput.value = '';
+        
+        // Ensure clean state before showing popup
+        clearInterval(timerInterval);
+        mathPopup.style.display = 'flex';
+        answerInput.focus();
+        startTimer();
+    } catch (error) {
+        console.error('Error showing math popup:', error);
+        // If there's an error, resume the game
+        isPaused = false;
+    }
 }
 
 function updateHeartsDisplay() {

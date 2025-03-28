@@ -420,7 +420,7 @@ $user_id = $_SESSION['user_id'];
             <div class="timer-container">
                 Time: <span id="timer">30</span>
             </div>
-            <img id="equationImage" src="" alt="Math Equation">
+            <img id="equationImage" src="http://marcconrad.com/uob/banana/api.php?out=json" alt="Math Equation">
             <input type="number" id="answer" placeholder="Enter your answer">
             <button id="submitAnswer">Submit</button>
         </div>
