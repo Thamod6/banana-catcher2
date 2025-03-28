@@ -207,4 +207,85 @@ body::before {
 .password-requirements li.valid::before {
     content: '✓';
     margin-right: 0.5rem;
+}
+
+/* Menu specific styles */
+.menu-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease;
+}
+
+.menu-header {
+    margin-bottom: 30px;
+}
+
+.menu-header h1 {
+    color: #4CAF50;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.menu-header p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menu-btn i {
+    font-size: 1.2em;
+}
+
+.menu-btn:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+.menu-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.menu-btn.logout {
+    background: #ff4444;
+    margin-top: 10px;
+}
+
+.menu-btn.logout:hover {
+    background: #cc0000;
+    box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
 } 
