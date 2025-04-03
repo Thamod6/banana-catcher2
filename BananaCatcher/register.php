@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             // Check if email exists
             $user->email = $email;
-            if ($user->emailExists()) {
+            if ($user->emailExists($user->email)) {
                 $error_message = "Email already registered";
             } else {
                 // Create user
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     <div class="register-container">
         <div class="register-header">
-            <h1>Banana Game</h1>
+            <h1>BANANA CATCHER</h1>
             <p>Create your account to start playing!</p>
         </div>
         

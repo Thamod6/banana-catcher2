@@ -23,8 +23,39 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3);
     z-index: 1;
+}
+
+.game-title {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 1000;
+    color: #4CAF50;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 0.5s ease;
+}
+
+.game-title h1 {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 2px;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
 }
 
 .login-container, .register-container {
@@ -41,6 +72,7 @@ body::before {
     width: 90%;
     z-index: 1000;
     animation: fadeIn 0.5s ease;
+    margin-top: 30px;
 }
 
 @keyframes fadeIn {
@@ -98,6 +130,65 @@ body::before {
     border-color: #4CAF50;
     outline: none;
     box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+/* Form Options Styles */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    padding: 0 5px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.remember-me:hover {
+    color: #4CAF50;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    accent-color: #4CAF50;
+    border: 2px solid #ddd;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.remember-me input[type="checkbox"]:checked {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.remember-me span {
+    font-size: 0.95em;
+    user-select: none;
+}
+
+.forgot-password {
+    color: #4CAF50;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.95em;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.forgot-password:hover {
+    color: #45a049;
+    background: rgba(76, 175, 80, 0.2);
+    text-decoration: none;
 }
 
 .login-btn, .register-btn {
@@ -288,4 +379,5 @@ body::before {
 .menu-btn.logout:hover {
     background: #cc0000;
     box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
-} 
+}
+
