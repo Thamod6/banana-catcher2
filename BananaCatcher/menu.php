@@ -19,6 +19,37 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="login.css">
     <style>
+        .game-title {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 1000;
+            color: #4CAF50;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 0.5s ease;
+        }
+
+        .game-title h1 {
+            font-size: 3em;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            letter-spacing: 2px;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -20px);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+
         .menu-container {
             position: fixed;
             top: 50%;
@@ -32,6 +63,13 @@ $username = $_SESSION['username'];
             max-width: 500px;
             width: 90%;
             z-index: 1000;
+            margin-top: 30px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
         }
 
         .welcome-text {
@@ -87,6 +125,10 @@ $username = $_SESSION['username'];
 </head>
 <body>
     <div class="monkey-decoration"></div>
+    
+    <div class="game-title">
+        <h1>BANANA CATCHER</h1>
+    </div>
     
     <div class="menu-container">
         <h2 class="welcome-text">Welcome, <?php echo htmlspecialchars($username); ?>!</h2>
